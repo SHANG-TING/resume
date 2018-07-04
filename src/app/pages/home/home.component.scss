@@ -1,0 +1,153 @@
+// Variables
+$menu-shadow: #006ea5;
+$menu-line-color: white;
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Mixin For Span Element
+@mixin line-span($t) {
+  transition: all $t + s cubic-bezier(.5, 10, .6, .1);
+  display: block;
+  box-shadow: 2px 2px 4px darken($menu-shadow, 4%);
+}
+
+// Mixin For Centering Elements
+@mixin center {
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.header {
+  position: fixed;
+  width: 70px;
+  height: 100%;
+  background: #383838;
+  top: 0;
+  left: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .menu {
+    .menu-text {
+      opacity: 0;
+      color: white;
+      margin-bottom: .5em;
+    }
+    &:hover {
+      .menu-text {
+        opacity: 1;
+        animation-name: fade;
+        animation-duration: 1s;
+      }
+    }
+    .burger {
+      cursor: pointer;
+      span {
+        @include line-span(0.4);
+      }
+      .active {
+        background: $menu-line-color;
+        width: 25px;
+        height: 3px;
+        margin-top: 4px;
+        @include center;
+      }
+      .cross {
+        background: $menu-line-color;
+        width: 25px;
+        height: 3px;
+        margin-top: 4px;
+        display: block;
+        @include center;
+        &:nth-child(3) {
+          display: none;
+        }
+      }
+      .cross:nth-of-type(1) {
+        transform: rotate(45deg);
+      }
+      .cross:nth-of-type(2) {
+        transform: rotate(-45deg);
+        margin-top: -3px;
+      }
+    }
+  }
+}
+
+.fixed-item {
+  position: fixed;
+  height: 100%;
+  width: 30%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('/assets/images/2.jpg');
+  background-size: cover;
+  opacity: .5;
+}
+
+.main {
+  margin-left: 70px;
+  .video-block {
+    position: relative;
+    background: #000;
+    height: 100vh;
+    video {
+      opacity: .4;
+    }
+  }
+  .introduction {
+    position: absolute;
+    top: 50%;
+    padding-left: 30px;
+    background: #525252;
+    width: calc(100% - 100px);
+    color: white;
+  }
+  .content {
+    margin-left: calc(30% - 50px);
+    .my-menu {
+      &.fixed {
+        position: fixed;
+        top: 0;
+        width: 70%;
+        ~.hidden{
+          display: block;
+          height: 50px;
+        }
+      }
+      li {
+        cursor: pointer;
+        display: inline-block;
+        width: calc(100% / 4);
+        line-height: 50px;
+        background: #404040;
+        text-align: center;
+        box-sizing: border-box;
+        border-right: 1px solid rgba(255, 255, 255, 0.21);
+        color: white;
+        transition: all 500ms linear;
+        &.active {
+          background: $menu-shadow;
+        }
+        &:hover{
+          color: #a9a9a9;
+        }
+      }
+      ~.hidden{
+        display: none;
+        height: 50px;
+      }
+    }
+  }
+}

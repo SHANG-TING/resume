@@ -1,0 +1,52 @@
+<div class="fixed-item">
+
+</div>
+<header class="header">
+  <div class="menu">
+    <div class="menu-text">
+      Menu
+    </div>
+    <div class="burger" (click)="menuOpen = !menuOpen">
+      <span [ngClass]="{ 'cross':menuOpen,'active':!menuOpen  }"></span>
+      <span [ngClass]="{ 'cross':menuOpen,'active':!menuOpen  }"></span>
+      <span [ngClass]="{ 'cross':menuOpen,'active':!menuOpen  }"></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="main">
+
+  <div class="video-block">
+    <video autoplay loop width="100%" height="100%" #video>
+      <source src="assets/video/videoplayback.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="introduction">
+    <p>我是來自高雄的前端工程師 王崇軒</p>
+    <h2>Welcome, I'm Evan!</h2>
+  </div>
+  <div class="content">
+    <ul class="my-menu" #elm>
+      <li class="active">
+        ABOUT
+      </li>
+      <li>
+        123
+      </li>
+      <li>
+        123
+      </li>
+      <li>
+        123
+      </li>
+    </ul>
+    <div class="hidden"></div>
+
+    <div style="height: 1000px;background: white;padding: 0 50px">
+      <h2>
+        ABOUT ME
+      </h2>
+    </div>
+  </div>
+</div>
