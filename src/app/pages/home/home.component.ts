@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('elm') elm: ElementRef;
   menuOpen = false;
   scrollEvent: Observable<any>;
+  toDay = new Date();
 
   constructor() {
     this.scrollEvent = fromEvent(window, 'scroll');
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit() {
     this.video.nativeElement.muted = true;
