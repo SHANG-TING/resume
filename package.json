@@ -7,8 +7,12 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
+<<<<<<< HEAD
     "e2e": "ng e2e",
-    "deploy:github": "ng build --prod --build-optimizer --base-href=https://kevinwang6303.github.io/resume/ && ngh"
+    "build:deploy": "ng build --prod --build-optimizer --base-href=https://kevinwang6303.github.io/resume/ && ngh -d dist/resume"
+=======
+    "e2e": "ng e2e"
+>>>>>>> parent of 0dc69ce... 初步完成
   },
   "private": true,
   "dependencies": {
@@ -22,11 +26,8 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
-    "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
-    "smoothscroll-polyfill": "^0.4.3",
-    "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

@@ -2,25 +2,15 @@
 
 </div>
 <header class="header">
-  <div class="menu" (click)="menuOpen = !menuOpen">
+  <div class="menu">
     <div class="menu-text">
       Menu
     </div>
-    <div class="burger">
+    <div class="burger" (click)="menuOpen = !menuOpen">
       <span [ngClass]="{ 'cross':menuOpen,'active':!menuOpen  }"></span>
       <span [ngClass]="{ 'cross':menuOpen,'active':!menuOpen  }"></span>
       <span [ngClass]="{ 'cross':menuOpen,'active':!menuOpen  }"></span>
     </div>
-  </div>
-  <div class="other-menu" @flyInOut *ngIf="menuOpen">
-    <ul>
-      <li class="other-menu-item">
-        <h3>Home</h3>
-      </li>
-      <li class="other-menu-item">
-        <h3>Blog</h3>
-      </li>
-    </ul>
   </div>
 </header>
 
@@ -28,9 +18,9 @@
 <div class="main">
 
   <div class="video-block">
-    <video autoplay loop width="100%" height="100%" #video>
+    <!-- <video autoplay loop width="100%" height="100%" #video>
       <source src="assets/video/videoplayback.mp4" type="video/mp4">
-    </video>
+    </video> -->
   </div>
   <div class="brief">
     <p>我是來自高雄的前端工程師 王崇軒</p>
@@ -38,14 +28,23 @@
   </div>
   <div>
 
-    <ul class="my-menu" #menu>
-      <li [ngClass]="{'active':item.active}" *ngFor="let item of menuArray;let index = index;" (click)="goMenu(index)">
-        {{ item.name }}
+    <ul class="my-menu" #elm>
+      <li class="active">
+        ABOUT
+      </li>
+      <li>
+        EXPERIENCE
+      </li>
+      <li>
+        123
+      </li>
+      <li>
+        123
       </li>
     </ul>
     <div class="hidden"></div>
 
-    <div class="fixed-bg about" #about>
+    <div class="about">
       <div class="container">
         <div class="content">
           <h2 class="title">
@@ -53,7 +52,7 @@
           </h2>
           <div class="box">
             <div class="me">
-              <img src="assets/images/1.jpg" alt="">
+              <img src="assets/images/3.jpg" alt="">
             </div>
             <div class="introduction">
               <h4 class="name">Evan Wang 王崇軒</h4>
@@ -87,7 +86,7 @@
         </div>
       </div>
     </div>
-    <div class="fixed-bg experience" #experience>
+    <div class="experience">
       <div class="container">
         <div class="content">
           <h2 class="title">
@@ -182,145 +181,27 @@
         </div>
       </div>
     </div>
-    <div class="fixed-bg skills" #skills>
+    <div class="skills">
       <div class="container">
         <div class="content">
           <div class="box">
             <h2 class="title">
-              SKILLS
+              技能
             </h2>
-            <div>
+            <div class="bar-list">
               <h3>前端</h3>
               <div>
-                <div>
-                  <div style="display: inline-block;width: 78%;">HTML5/CSS</div>
-                  <span>80%</span>
-                </div>
+                HTML5/CSS
                 <div class="bar">
-                  <div class="inner" style="width: 80%;">
-                  </div>
-                </div>
-                <div>
-                  <div style="display: inline-block;width: 83%;">Javascript / Jquery / Typescript</div>
-                  <span>85%</span>
-                </div>
-                <div class="bar">
-                  <div class="inner" style="width: 85%;">
-                  </div>
-                </div>
-
-              </div>
-              <h3>後端</h3>
-              <div>
-                <div>
-                  <div style="display: inline-block;width: 68%;">C#</div>
-                  <span>70%</span>
-                </div>
-                <div class="bar">
-                  <div class="inner" style="width: 70%;">
-                  </div>
-                </div>
-                <div>
-                  <div style="display: inline-block;width: 68%;">MS-SQL</div>
-                  <span>70%</span>
-                </div>
-                <div class="bar">
-                  <div class="inner" style="width: 70%;">
-                  </div>
-                </div>
-                <div>
-                  <div style="display: inline-block;width: 68%;">PostgreSQL</div>
-                  <span>70%</span>
-                </div>
-                <div class="bar">
-                  <div class="inner" style="width: 70%;">
-                  </div>
-                </div>
-                <div>
-                  <div style="display: inline-block;width: 68%;">MongoDB</div>
-                  <span>70%</span>
-                </div>
-                <div class="bar">
-                  <div class="inner" style="width: 70%;">
-                  </div>
-                </div>
-              </div>
-              <h3>框架</h3>
-              <div>
-                <div>
-                  <div style="display: inline-block;width: 83%;">AngularJs</div>
-                  <span>85%</span>
-                </div>
-                <div class="bar">
-                  <div class="inner" style="width: 85%;">
-                  </div>
-                </div>
-                <div>
-                  <div style="display: inline-block;width: 83%;">Angular</div>
-                  <span>85%</span>
-                </div>
-                <div class="bar">
-                  <div class="inner" style="width: 85%;">
-                  </div>
-                </div>
-                <div>
-                  <div style="display: inline-block;width: 73%;">ASP.NET</div>
-                  <span>75%</span>
-                </div>
-                <div class="bar">
-                  <div class="inner" style="width: 75%;">
+                  <div class="inner">
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="fixed-bg trait" #trait>
-      <div class="container">
-        <div class="content">
-          <div class="box">
-            <h2 class="title">
-              TRAIT
-            </h2>
-            <div>
-              <ul>
-                <li>
-                  <h2>以學習以及實作中自我成長，追求新知識、深入感興趣細節</h2>
-                  <p class="margin-0">
-                    多學習非工作上的實務，包括PWA、MongoDB..等等，更深入研究AngularJS、Angular， 理解其運作與原理，從中學習其強大技巧， 讓自己具備更多能力，能與他人溝通，進一步交流。
-                  </p>
-                </li>
-                <li>
-                  <h2>注重團隊溝通</h2>
-                  <p class="margin-0">
-                    曾多次參與參與團隊開發政府標案以及2017世大運官網，以及利用熟悉框架以及語言與團隊進行開發，良好的團隊溝通成就美好的產品。
-                  </p>
-                </li>
-                <li>
-                  <h2>喜歡新鮮事物</h2>
-                  <p class="margin-0">
-                    資訊爆炸的時代，隨時關注熱門以及感興趣事物，讓自我能力不落人後。
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="fixed-bg trait">
-      <div class="container">
-        <div class="content">
-          <div class="back" (click)="goTop()">
-            <div>
-              <span class="icon-arrow-up"></span>
-            </div>
-            <a class="back-text">Back to Top</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>
