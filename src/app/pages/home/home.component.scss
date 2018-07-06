@@ -12,6 +12,18 @@ $menu-line-color: white;
   }
 }
 
+@keyframes move {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
 // Mixin For Span Element
 @mixin line-span($t) {
   transition: all $t + s cubic-bezier(.5, 10, .6, .1);
@@ -38,7 +50,9 @@ $menu-line-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
   .menu {
+    cursor: pointer;
     .menu-text {
       opacity: 0;
       color: white;
@@ -52,7 +66,6 @@ $menu-line-color: white;
       }
     }
     .burger {
-      cursor: pointer;
       span {
         @include line-span(0.4);
       }
@@ -83,6 +96,43 @@ $menu-line-color: white;
       }
     }
   }
+  .other-menu {
+    position: fixed;
+    width: 250px;
+    left: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: #242727;
+    opacity: .8;
+    ul {
+      width: 100%;
+      text-align: center;
+      .other-menu-item {
+        cursor: pointer;
+        border-bottom: 1px solid white;
+        transition: all 200ms linear;
+        color: white;
+        &:hover {
+          color: $menu-shadow;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1064px) {
+    width: 100%;
+    height: 60px;
+    top: 0;
+    left: 0;
+    padding-left: 1em;
+    justify-content: start;
+    align-items: start;
+    .other-menu {
+      height: 100vh;
+      top: 0;
+    }
+  }
 }
 
 .main {
@@ -97,19 +147,20 @@ $menu-line-color: white;
   }
   .brief {
     position: absolute;
-    top: 50%;
+    top: 60%;
     padding-left: 30px;
     background: #525252;
     width: calc(100% - 100px);
     color: white;
   }
   .my-menu {
+    z-index: 1;
     padding-left: 250px;
     background: #000;
     &.fixed {
       position: fixed;
       top: 0;
-      width: calc(100% - 250px);
+      width: calc(100% - 320px);
       ~.hidden {
         display: block;
         height: 50px;
@@ -138,28 +189,32 @@ $menu-line-color: white;
       height: 50px;
     }
   }
-  .container {
-    background: white;
-    margin-left: 250px;
-    display: flex;
-    justify-content: center;
-    padding: 1em 0;
-    .content {
-      width: 100%;
-      max-width: 1024px;
-      .title {
-        margin: 0;
-        padding: .8em;
-        font-size: 50px;
-        font-weight: 900;
-        color: #666;
+  .fixed-bg {
+    background-attachment: fixed;
+    border-bottom: 1px dotted #666;
+    background-position: left;
+    background-size: contain;
+    .container {
+      background: white;
+      margin-left: 250px;
+      display: flex;
+      justify-content: center;
+      padding: 1em 0;
+      .content {
+        width: 100%;
+        max-width: 1024px;
+        .title {
+          margin: 0;
+          padding: .8em;
+          font-size: 50px;
+          font-weight: 900;
+          color: #666;
+        }
       }
     }
   }
   .about {
-    background-image: url('/assets/images/2.jpg');
-    background-attachment: fixed;
-    border-bottom: 1px dotted #666;
+    background-image: url('/assets/images/222.jpg');
     .box {
       display: flex;
       margin: 0 2em;
@@ -196,9 +251,7 @@ $menu-line-color: white;
     }
   }
   .experience {
-    background-image: url('/assets/images/3.jpg');
-    background-attachment: fixed;
-    border-bottom: 1px dotted #666;
+    background-image: url('/assets/images/333.jpg');
     .box {
       margin: 0 2em;
       .education {
@@ -259,7 +312,7 @@ $menu-line-color: white;
             top: 50%;
             right: 37px;
             font-size: 30px;
-            opacity: .5;
+            opacity: .2;
             transform: rotate(15deg);
           }
         }
@@ -267,11 +320,99 @@ $menu-line-color: white;
     }
   }
   .skills {
-    background-image: url('/assets/images/4.jpg');
-    background-attachment: fixed;
-    border-bottom: 1px dotted #666;
+    background-image: url('/assets/images/444.jpg');
     .box {
       margin: 0 2em;
+      .bar {
+        width: 100%;
+        border-radius: 4px;
+        background: #eee;
+        .inner {
+          background: $menu-shadow;
+          height: 15px;
+          border-radius: 4px 0 0 4px;
+        }
+      }
+    }
+  }
+  .trait {
+    background-image: url('/assets/images/555.jpg');
+    .box {
+      margin: 0 2em;
+    }
+  }
+  .back {
+    text-align: center;
+    cursor: pointer;
+    &:hover {
+      animation-name: move;
+      animation-duration: 2s;
+      animation-direction: alternate-reverse;
+      animation-iteration-count: infinite;
+    }
+    .icon-arrow-up {
+      color: $menu-shadow;
+    }
+    .back-text {
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-style: italic;
+      color: #999;
+      font-size: 12px;
+    }
+  }
+  @media screen and (max-width: 1064px) {
+    margin: 0;
+    .my-menu {
+      padding: 0;
+      &.fixed {
+        width: 100%;
+        top: 60px;
+      }
+    }
+    .fixed-bg {
+      .container {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .main {
+    .my-menu {
+      li {
+        font-size: 14px;
+      }
+    }
+    .fixed-bg {
+      .container {
+        .content {
+          .title {
+            font-size: 40px;
+          }
+        }
+      }
+    }
+    .about {
+      .box {
+        display: block;
+        .me {
+          width: 100%;
+          margin: 0;
+        }
+        .introduction {
+          width: 100%;
+        }
+      }
+    }
+    .experience {
+      .box {
+        .education {
+          .line {
+            margin: 0;
+          }
+        }
+      }
     }
   }
 }
